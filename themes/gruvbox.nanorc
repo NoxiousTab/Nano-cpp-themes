@@ -1,0 +1,54 @@
+## Gruvbox Dark -- GNU nano theme for C++  (Warm retro, earthy and high-contrast)
+## Recommended terminal colours: background #282828, foreground #ebdbb2 (set in your terminal profile; nano cannot paint them).
+## Uses only nano's named colours, so it parses on nano 7.2 (which rejects numeric and #hex colours).
+## Needs a 256-colour terminal (TERM=xterm-256color). black / lightwhite follow your terminal palette.
+
+## Interface
+set titlecolor black,tawny
+set statuscolor black,tawny
+set selectedcolor black,brick
+set spotlightcolor black,brick
+set keycolor black,tawny
+set numbercolor slate
+
+## Role palette
+##   cmt   latte      Comments
+##   kw    brick      Keywords
+##   type  tawny      Fundamental types
+##   func  sage       Function names
+##   cls   tawny      Class names
+##   ns    sand       Namespaces
+##   str   ocher      Strings and chars
+##   num   rosy       Numbers
+##   const rosy       Constants and macros
+##   op    sand       Operators
+##   punct slate      Punctuation
+##   pp    orange     Preprocessor
+##   hdr   ocher      Include paths
+##   std   slate      Standard library
+##   esc   orange     Escapes
+##   todo  brick      TODO tags
+
+syntax "cpp-gruvbox" "\.(cc|cpp|cxx|hh|hpp|hxx|h|ino)$"
+
+color sand "[-+*/%=<>!&|^~?:]+"
+color sand "\<[A-Za-z_][A-Za-z0-9_]*::"
+color sage "\<[A-Za-z_][A-Za-z0-9_]*[[:space:]]*\("
+color slate "[][(){};,.]"
+color tawny "\<[A-Z][A-Za-z0-9_]*[a-z][A-Za-z0-9_]*\>"
+color rosy "\<(true|false|nullptr|NULL|k[A-Z][A-Za-z0-9]*|[A-Z][A-Z0-9_]{2,})\>"
+color tawny "\<(auto|bool|char|double|float|int|long|short|signed|unsigned|void|wchar_t|char8_t|char16_t|char32_t|size_t|ssize_t|ptrdiff_t|u?int(8|16|32|64)_t)\>"
+color slate "\<(std|cout|cin|cerr|endl|vector|string|string_view|map|unordered_map|set|unordered_set|list|deque|array|pair|tuple|optional|variant|unique_ptr|shared_ptr|weak_ptr|make_unique|make_shared|move|forward|function|ostream|istream|stringstream|thread|mutex)\>"
+color brick "\<(alignas|alignof|and|asm|break|case|catch|class|const|consteval|constexpr|constinit|const_cast|continue|co_await|co_return|co_yield|decltype|default|delete|do|dynamic_cast|else|enum|explicit|export|extern|final|for|friend|goto|if|inline|mutable|namespace|new|noexcept|not|operator|or|override|private|protected|public|register|reinterpret_cast|requires|return|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|union|using|virtual|volatile|while|xor)\>"
+color rosy "\<[0-9]+\.[0-9]+([eE][+-]?[0-9]+)?[fFlL]?\>"
+color rosy "\<[0-9]+[uUlL]*\>"
+color rosy "\<0[xX][0-9a-fA-F]+[uUlL]*\>"
+color ocher "^[[:space:]]*#[[:space:]]*include[[:space:]]+[<"][^>"]+[>"]"
+color orange "^[[:space:]]*#[[:space:]]*(include|define|undef|ifdef|ifndef|if|else|elif|endif|pragma|error|warning)\>"
+color ocher ""(\\.|[^"])*""
+color ocher "'(\\.|[^'\\])'"
+color orange "\\[abfnrtv0\\"']"
+color latte "//.*"
+color latte start="/\*" end="\*/"
+color brick "(TODO|FIXME|XXX|NOTE|HACK)"
+color ,red "[[:space:]]+$"

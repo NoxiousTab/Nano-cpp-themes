@@ -1,0 +1,54 @@
+## Matrix -- GNU nano theme for C++  (Black glass, every shade of phosphor green)
+## Recommended terminal colours: background #010a03, foreground #9bf5b0 (set in your terminal profile; nano cannot paint them).
+## Uses only nano's named colours, so it parses on nano 7.2 (which rejects numeric and #hex colours).
+## Needs a 256-colour terminal (TERM=xterm-256color). black / lightwhite follow your terminal palette.
+
+## Interface
+set titlecolor black,mint
+set statuscolor black,mint
+set selectedcolor black,lime
+set spotlightcolor black,lime
+set keycolor black,mint
+set numbercolor sage
+
+## Role palette
+##   cmt   sage       Comments
+##   kw    lightwhite Keywords
+##   type  sand       Fundamental types
+##   func  mint       Function names
+##   cls   sand       Class names
+##   ns    teal       Namespaces
+##   str   teal       Strings and chars
+##   num   lime       Numbers
+##   const lime       Constants and macros
+##   op    teal       Operators
+##   punct teal       Punctuation
+##   pp    teal       Preprocessor
+##   hdr   teal       Include paths
+##   std   teal       Standard library
+##   esc   lime       Escapes
+##   todo  lime       TODO tags
+
+syntax "cpp-matrix" "\.(cc|cpp|cxx|hh|hpp|hxx|h|ino)$"
+
+color teal "[-+*/%=<>!&|^~?:]+"
+color teal "\<[A-Za-z_][A-Za-z0-9_]*::"
+color mint "\<[A-Za-z_][A-Za-z0-9_]*[[:space:]]*\("
+color teal "[][(){};,.]"
+color sand "\<[A-Z][A-Za-z0-9_]*[a-z][A-Za-z0-9_]*\>"
+color lime "\<(true|false|nullptr|NULL|k[A-Z][A-Za-z0-9]*|[A-Z][A-Z0-9_]{2,})\>"
+color sand "\<(auto|bool|char|double|float|int|long|short|signed|unsigned|void|wchar_t|char8_t|char16_t|char32_t|size_t|ssize_t|ptrdiff_t|u?int(8|16|32|64)_t)\>"
+color teal "\<(std|cout|cin|cerr|endl|vector|string|string_view|map|unordered_map|set|unordered_set|list|deque|array|pair|tuple|optional|variant|unique_ptr|shared_ptr|weak_ptr|make_unique|make_shared|move|forward|function|ostream|istream|stringstream|thread|mutex)\>"
+color lightwhite "\<(alignas|alignof|and|asm|break|case|catch|class|const|consteval|constexpr|constinit|const_cast|continue|co_await|co_return|co_yield|decltype|default|delete|do|dynamic_cast|else|enum|explicit|export|extern|final|for|friend|goto|if|inline|mutable|namespace|new|noexcept|not|operator|or|override|private|protected|public|register|reinterpret_cast|requires|return|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|union|using|virtual|volatile|while|xor)\>"
+color lime "\<[0-9]+\.[0-9]+([eE][+-]?[0-9]+)?[fFlL]?\>"
+color lime "\<[0-9]+[uUlL]*\>"
+color lime "\<0[xX][0-9a-fA-F]+[uUlL]*\>"
+color teal "^[[:space:]]*#[[:space:]]*include[[:space:]]+[<"][^>"]+[>"]"
+color teal "^[[:space:]]*#[[:space:]]*(include|define|undef|ifdef|ifndef|if|else|elif|endif|pragma|error|warning)\>"
+color teal ""(\\.|[^"])*""
+color teal "'(\\.|[^'\\])'"
+color lime "\\[abfnrtv0\\"']"
+color sage "//.*"
+color sage start="/\*" end="\*/"
+color lime "(TODO|FIXME|XXX|NOTE|HACK)"
+color ,red "[[:space:]]+$"

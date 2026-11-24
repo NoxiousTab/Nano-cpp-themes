@@ -1,0 +1,54 @@
+## Cyberpunk -- GNU nano theme for C++  (Ultraviolet black, neon cyan and pink)
+## Recommended terminal colours: background #0d0221, foreground #e0f7ff (set in your terminal profile; nano cannot paint them).
+## Uses only nano's named colours, so it parses on nano 7.2 (which rejects numeric and #hex colours).
+## Needs a 256-colour terminal (TERM=xterm-256color). black / lightwhite follow your terminal palette.
+
+## Interface
+set titlecolor black,crimson
+set statuscolor black,crimson
+set selectedcolor black,sand
+set spotlightcolor black,sand
+set keycolor black,crimson
+set numbercolor slate
+
+## Role palette
+##   cmt   slate      Comments
+##   kw    crimson    Keywords
+##   type  lagoon     Fundamental types
+##   func  sand       Function names
+##   cls   lagoon     Class names
+##   ns    mauve      Namespaces
+##   str   teal       Strings and chars
+##   num   peach      Numbers
+##   const mauve      Constants and macros
+##   op    crimson    Operators
+##   punct lagoon     Punctuation
+##   pp    lagoon     Preprocessor
+##   hdr   teal       Include paths
+##   std   lagoon     Standard library
+##   esc   crimson    Escapes
+##   todo  sand       TODO tags
+
+syntax "cpp-cyberpunk" "\.(cc|cpp|cxx|hh|hpp|hxx|h|ino)$"
+
+color crimson "[-+*/%=<>!&|^~?:]+"
+color mauve "\<[A-Za-z_][A-Za-z0-9_]*::"
+color sand "\<[A-Za-z_][A-Za-z0-9_]*[[:space:]]*\("
+color lagoon "[][(){};,.]"
+color lagoon "\<[A-Z][A-Za-z0-9_]*[a-z][A-Za-z0-9_]*\>"
+color mauve "\<(true|false|nullptr|NULL|k[A-Z][A-Za-z0-9]*|[A-Z][A-Z0-9_]{2,})\>"
+color lagoon "\<(auto|bool|char|double|float|int|long|short|signed|unsigned|void|wchar_t|char8_t|char16_t|char32_t|size_t|ssize_t|ptrdiff_t|u?int(8|16|32|64)_t)\>"
+color lagoon "\<(std|cout|cin|cerr|endl|vector|string|string_view|map|unordered_map|set|unordered_set|list|deque|array|pair|tuple|optional|variant|unique_ptr|shared_ptr|weak_ptr|make_unique|make_shared|move|forward|function|ostream|istream|stringstream|thread|mutex)\>"
+color crimson "\<(alignas|alignof|and|asm|break|case|catch|class|const|consteval|constexpr|constinit|const_cast|continue|co_await|co_return|co_yield|decltype|default|delete|do|dynamic_cast|else|enum|explicit|export|extern|final|for|friend|goto|if|inline|mutable|namespace|new|noexcept|not|operator|or|override|private|protected|public|register|reinterpret_cast|requires|return|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|union|using|virtual|volatile|while|xor)\>"
+color peach "\<[0-9]+\.[0-9]+([eE][+-]?[0-9]+)?[fFlL]?\>"
+color peach "\<[0-9]+[uUlL]*\>"
+color peach "\<0[xX][0-9a-fA-F]+[uUlL]*\>"
+color teal "^[[:space:]]*#[[:space:]]*include[[:space:]]+[<"][^>"]+[>"]"
+color lagoon "^[[:space:]]*#[[:space:]]*(include|define|undef|ifdef|ifndef|if|else|elif|endif|pragma|error|warning)\>"
+color teal ""(\\.|[^"])*""
+color teal "'(\\.|[^'\\])'"
+color crimson "\\[abfnrtv0\\"']"
+color slate "//.*"
+color slate start="/\*" end="\*/"
+color sand "(TODO|FIXME|XXX|NOTE|HACK)"
+color ,red "[[:space:]]+$"
